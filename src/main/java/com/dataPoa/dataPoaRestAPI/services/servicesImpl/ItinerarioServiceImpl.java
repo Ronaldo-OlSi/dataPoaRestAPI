@@ -41,7 +41,6 @@ public class ItinerarioServiceImpl implements ItinerarioService {
     public List<Itinerario> getAllItinerariosByLinha(String idLinha) throws IOException, JSONException {
         HttpURLConnection conn = new HttpConnectionConfigureUtil().executeHttpConnection(
                 URL_ITINERARIOS + idLinha);
-
         try {
             if (conn.getResponseCode() == 200) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -102,5 +101,25 @@ public class ItinerarioServiceImpl implements ItinerarioService {
         List<Itinerario> itinerarios = Optional.ofNullable(this.getAllItinerariosByLinha(idLinha))
                 .orElse(new ArrayList<>());
         itinerarios.forEach(itinerario -> repository.save(itinerario));
+    }
+
+    /**
+     * Busca os itinerários de acordo com o ID da linha de ônibus.
+     *
+     * @param idLinha ID da linha de ônibus
+     * @return lista de {@link Itinerario}
+     */
+    @Override
+    public List<Itinerario> findByIdLinha(String idLinha) {
+        return repository.findByIdLinha(idLinha);
+    }
+
+    /**
+     * Busca todos os Itinerários cadastrados na base.
+     *
+     * @return uma {@link List} de {@link Itinerario}
+     */
+    public List<Itinerario> findAll() {
+        return repository.findAll();
     }
 }

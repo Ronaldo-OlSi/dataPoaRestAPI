@@ -22,10 +22,20 @@ public class ItinerarioController {
         this.service = service;
     }
 
-    @GetMapping("/itinerarios/{idLinha}")
+    @GetMapping("/itinerarios/get-from-service/{idLinha}")
     public List<Itinerario> getItinerarioByLinha(@PathVariable("idLinha") String idLinha) throws IOException,
             JSONException {
         return service.getAllItinerariosByLinha(idLinha);
+    }
+
+    @GetMapping("/itinerarios/linha/{idLinha}")
+    public List<Itinerario> findByIdLinha(@PathVariable("idLinha") String idLinha) {
+        return service.findByIdLinha(idLinha);
+    }
+
+    @GetMapping("/itinerarios/list")
+    public List<Itinerario> findAll() {
+        return service.findAll();
     }
 
     @PostMapping("/itinerarios/post-from-service/{idLinha}")
