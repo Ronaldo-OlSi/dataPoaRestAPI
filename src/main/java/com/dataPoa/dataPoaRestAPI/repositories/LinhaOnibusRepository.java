@@ -10,4 +10,6 @@ import java.util.List;
 public interface LinhaOnibusRepository extends MongoRepository<LinhaOnibus, String> {
 
     List<LinhaOnibus> findByNome(String nome);
+
+    boolean existsByNomeOrCodigo(String nome, String codigo);
 }

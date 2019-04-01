@@ -7,4 +7,6 @@ import java.util.List;
 public interface LinhaOnibusService {
 
     List<LinhaOnibus> findByNome(String nome);
+
+    boolean existsByNomeOrCodigo(String nome, String codigo);
 }

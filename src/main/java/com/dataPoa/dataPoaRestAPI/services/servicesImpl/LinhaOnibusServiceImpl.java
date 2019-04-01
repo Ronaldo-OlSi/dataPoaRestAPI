@@ -67,14 +67,37 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
     }
 
     /**
+     * Salva uma linha de ônibuis.
+     *
+     * @param linhaOnibus objeto contendo as características da linha de ônibus a ser salva
+     * @return
+     */
+    public void save(LinhaOnibus linhaOnibus) {
+        repository.save(linhaOnibus);
+    }
+
+    /**
      * Realiza a busca de {@link LinhaOnibus} por nome.
      *
      * @param nome da linha de Ônibus
-     * @return os dados referente a linha informada
+     * @return uma {@link List} contendo os dados referente a linha informada
      */
     @Override
     public List<LinhaOnibus> findByNome(String nome) {
         return repository.findByNome(nome);
+    }
+
+    /**
+     * Verifica se existe uma{@link LinhaOnibus} por meio do nome OU código (prefixo).
+     *
+     * @param nome da linha
+     * @param codigo prefixo da linha
+     * @return Verdadeiro se existir uma linha cadastrada com o Nome ou Código informado, Falso se não houver nenhuma
+     * linha com estás características
+     */
+    @Override
+    public boolean existsByNomeOrCodigo(String nome, String codigo) {
+        return repository.existsByNomeOrCodigo(nome, codigo);
     }
 
     /**
