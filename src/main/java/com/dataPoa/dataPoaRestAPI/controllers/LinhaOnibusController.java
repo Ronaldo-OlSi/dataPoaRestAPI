@@ -25,7 +25,7 @@ public class LinhaOnibusController {
         this.service = service;
     }
 
-    @GetMapping({"/", "/linhas"})
+    @GetMapping("/linhas/get-from-service")
     public List<LinhaOnibus> getAll() throws IOException {
         return service.getAllLinhasOnibus();
     }
