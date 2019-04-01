@@ -2,6 +2,7 @@ package com.dataPoa.dataPoaRestAPI.services.servicesImpl;
 
 import com.dataPoa.dataPoaRestAPI.models.Itinerario;
 import com.dataPoa.dataPoaRestAPI.repositories.ItinerarioRepository;
+import com.dataPoa.dataPoaRestAPI.repositories.LinhaOnibusRepository;
 import com.dataPoa.dataPoaRestAPI.services.ItinerarioService;
 import com.dataPoa.dataPoaRestAPI.utils.HttpConnectionConfigureUtil;
 import org.json.JSONException;
@@ -25,6 +26,9 @@ public class ItinerarioServiceImpl implements ItinerarioService {
 
     @Autowired
     private ItinerarioRepository repository;
+
+    @Autowired
+    private LinhaOnibusRepository linhaOnibusRepository;
 
     public ItinerarioServiceImpl(ItinerarioRepository repository) {
         this.repository = repository;
@@ -77,7 +81,7 @@ public class ItinerarioServiceImpl implements ItinerarioService {
                 Itinerario itinerario = new Itinerario();
                 if (jsonObject.get(key) instanceof JSONObject) {
                     JSONObject field = jsonObject.getJSONObject(key);
-                    itinerario.setToken(key);
+                    itinerario.setToken(Integer.parseInt(key));
                     itinerario.setIdLinha(jsonObject.getString("idlinha"));
                     itinerario.setLat(field.getString("lat"));
                     itinerario.setLng(field.getString("lng"));
@@ -104,6 +108,15 @@ public class ItinerarioServiceImpl implements ItinerarioService {
     }
 
     /**
+     * Salva uma linha de ônibuis.
+     *
+     * @param itinerario bjeto contendo as características da linha de ônibus a ser salva
+     */
+    public void save(Itinerario itinerario) {
+        repository.save(itinerario);
+    }
+
+    /**
      * Busca os itinerários de acordo com o ID da linha de ônibus.
      *
      * @param idLinha ID da linha de ônibus
@@ -112,6 +125,28 @@ public class ItinerarioServiceImpl implements ItinerarioService {
     @Override
     public List<Itinerario> findByIdLinha(String idLinha) {
         return repository.findByIdLinha(idLinha);
+    }
+
+    /**
+     * Verifica se já existe um {@link Itinerario} com a mesma Latitude ou Longitude cadastrada.
+     *
+     * @param lat latidade
+     * @param lng longitude
+     * @return Verdadeiro se já existir um {@link Itinerario} com Latitude ou Longitude cadastrada, Falso de não existir
+     */
+    @Override
+    public boolean existsByIdLinhaAndLatAndLng(String idLinha, String lat, String lng) {
+        return repository.existsByIdLinhaAndLatAndLng(idLinha, lat, lng);
+    }
+
+    /**
+     * Verifica se existe uma {@link com.dataPoa.dataPoaRestAPI.models.LinhaOnibus} com o ID informado.
+     *
+     * @param idLinha ID da linha
+     * @return Verdadeiro se existir uma {@link com.dataPoa.dataPoaRestAPI.models.LinhaOnibus} com o ID informado
+     */
+    public boolean existsById(String idLinha) {
+        return linhaOnibusRepository.existsById(idLinha);
     }
 
     /**

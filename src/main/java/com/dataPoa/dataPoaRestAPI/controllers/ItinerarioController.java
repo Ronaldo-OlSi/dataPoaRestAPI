@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -41,5 +42,17 @@ public class ItinerarioController {
     @PostMapping("/itinerarios/post-from-service/{idLinha}")
     public void saveItinerariosFromService(@PathVariable String idLinha) throws IOException, JSONException {
         service.saveItinerariosFromService(idLinha);
+    }
+
+    @PostMapping("/itinerario/new")
+    public String save(@RequestBody Itinerario itinerario) {
+        if (service.existsByIdLinhaAndLatAndLng(itinerario.getIdLinha(), itinerario.getLat(), itinerario.getLng())) {
+            return "Já existe uma Linha de Ônibus cadastrada com este Itinerário!";
+        } else if (!service.existsById(itinerario.getIdLinha())) {
+            return "Não foi encontrada nenhuma Linha de Ônibus com este ID.";
+        } else {
+            service.save(itinerario);
+            return "Itinerário cadastrado com sucesso!";
+        }
     }
 }

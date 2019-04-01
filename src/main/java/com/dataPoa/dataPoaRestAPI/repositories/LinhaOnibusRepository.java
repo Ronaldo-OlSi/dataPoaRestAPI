@@ -11,5 +11,7 @@ public interface LinhaOnibusRepository extends MongoRepository<LinhaOnibus, Stri
 
     List<LinhaOnibus> findByNome(String nome);
 
+    boolean existsById(String id);
+
     boolean existsByNomeOrCodigo(String nome, String codigo);
 }

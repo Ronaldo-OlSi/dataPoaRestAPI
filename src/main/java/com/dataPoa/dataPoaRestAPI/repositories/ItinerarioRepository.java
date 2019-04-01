@@ -10,4 +10,6 @@ import java.util.List;
 public interface ItinerarioRepository extends MongoRepository<Itinerario, String> {
 
     List<Itinerario> findByIdLinha(String idLinha);
+
+    boolean existsByIdLinhaAndLatAndLng(String idLinha, String lat, String lng);
 }

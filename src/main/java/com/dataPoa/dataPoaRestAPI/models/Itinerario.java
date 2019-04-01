@@ -23,7 +23,7 @@ public class Itinerario {
     @Id
     private String id;
     private String idLinha;
-    private String token;
+    private Integer token;
     private String lat;
     private String lng;
 }

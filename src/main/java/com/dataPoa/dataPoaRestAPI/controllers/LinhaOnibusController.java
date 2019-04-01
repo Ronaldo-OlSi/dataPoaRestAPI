@@ -62,7 +62,7 @@ public class LinhaOnibusController {
     @PostMapping("/linha/new")
     public String save(@RequestBody LinhaOnibus linhaOnibus) {
         if (service.existsByNomeOrCodigo(linhaOnibus.getNome(), linhaOnibus.getCodigo())) {
-            return "Já existe uma Linha de Ônibus com este Nome ou Código!";
+            return "Já existe uma Linha de Ônibus com este Nome ou Código (Prefixo)!";
         } else {
             service.save(linhaOnibus);
             return "Linha de Ônibus cadastrada com sucesso!";

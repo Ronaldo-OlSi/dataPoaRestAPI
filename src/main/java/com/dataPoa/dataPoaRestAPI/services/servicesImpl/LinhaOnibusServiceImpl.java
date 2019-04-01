@@ -70,7 +70,6 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
      * Salva uma linha de ônibuis.
      *
      * @param linhaOnibus objeto contendo as características da linha de ônibus a ser salva
-     * @return
      */
     public void save(LinhaOnibus linhaOnibus) {
         repository.save(linhaOnibus);
@@ -88,7 +87,7 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
     }
 
     /**
-     * Verifica se existe uma{@link LinhaOnibus} por meio do nome OU código (prefixo).
+     * Verifica se existe uma {@link LinhaOnibus} por meio do nome OU código (prefixo).
      *
      * @param nome da linha
      * @param codigo prefixo da linha
