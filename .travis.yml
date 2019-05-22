@@ -1,0 +1,18 @@
+language: java
+
+install: true
+
+jdk:
+  - openjdk8
+  - openjdk10
+  - openjdk11
+
+os:
+  - linux
+  - windows
+
+script: ./mvnw clean install
+
+cache:
+  directories:
+    - $HOME/.m2
