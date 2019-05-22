@@ -9,7 +9,6 @@ jdk:
 
 os:
   - linux
-  - windows
 
 script: ./mvnw clean install
 
