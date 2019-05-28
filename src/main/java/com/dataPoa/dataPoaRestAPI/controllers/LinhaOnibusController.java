@@ -18,9 +18,9 @@ import java.util.List;
 @RestController
 public class LinhaOnibusController {
 
-    @Autowired
     private LinhaOnibusServiceImpl service;
 
+    @Autowired
     public LinhaOnibusController(LinhaOnibusServiceImpl service) {
         this.service = service;
     }

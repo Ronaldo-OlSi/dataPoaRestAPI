@@ -24,13 +24,12 @@ public class ItinerarioServiceImpl implements ItinerarioService {
 
     private static final String URL_ITINERARIOS = "http://www.poatransporte.com.br/php/facades/process.php?a=il&p=";
 
-    @Autowired
     private ItinerarioRepository repository;
 
-    @Autowired
     private LinhaOnibusRepository linhaOnibusRepository;
 
-    public ItinerarioServiceImpl(ItinerarioRepository repository) {
+    @Autowired
+    public ItinerarioServiceImpl(ItinerarioRepository repository, LinhaOnibusRepository linhaOnibusRepository) {
         this.repository = repository;
     }
 

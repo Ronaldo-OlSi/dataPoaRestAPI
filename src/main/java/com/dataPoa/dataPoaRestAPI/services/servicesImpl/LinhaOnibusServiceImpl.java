@@ -21,9 +21,9 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
 
     private static final String URL_LINHAS_ONIBUS = "http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=%&t=o";
 
-    @Autowired
     private LinhaOnibusRepository repository;
 
+    @Autowired
     public LinhaOnibusServiceImpl(LinhaOnibusRepository repository) {
         this.repository = repository;
     }

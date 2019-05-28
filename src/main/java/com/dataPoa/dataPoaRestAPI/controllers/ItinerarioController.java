@@ -16,9 +16,9 @@ import java.util.List;
 @RestController
 public class ItinerarioController {
 
-    @Autowired
     private ItinerarioServiceImpl service;
 
+    @Autowired
     public ItinerarioController(ItinerarioServiceImpl service) {
         this.service = service;
     }
