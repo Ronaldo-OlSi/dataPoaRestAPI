@@ -31,6 +31,7 @@ public class ItinerarioServiceImpl implements ItinerarioService {
     @Autowired
     public ItinerarioServiceImpl(ItinerarioRepository repository, LinhaOnibusRepository linhaOnibusRepository) {
         this.repository = repository;
+        this.linhaOnibusRepository = linhaOnibusRepository;
     }
 
     /**
