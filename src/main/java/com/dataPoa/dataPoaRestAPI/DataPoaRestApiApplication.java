@@ -11,5 +11,4 @@ public class DataPoaRestApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DataPoaRestApiApplication.class, args);
 	}
-
 }
