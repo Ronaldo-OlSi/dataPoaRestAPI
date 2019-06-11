@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class LinhaOnibusServiceTest {
+public class LinhaOnibusServiceImplTest {
 
     @Mock
     private LinhaOnibusServiceImpl service = mock(LinhaOnibusServiceImpl.class);
@@ -25,5 +25,12 @@ public class LinhaOnibusServiceTest {
                 .stream()
                 .anyMatch(Objects::nonNull)
         );
+    }
+
+    @Test
+    public void shouldSaveAllBuslineFromService() throws IOException {
+        LinhaOnibus linhaOnibus = new LinhaOnibus();
+
+        service.saveLinhasFromService();
     }
 }
