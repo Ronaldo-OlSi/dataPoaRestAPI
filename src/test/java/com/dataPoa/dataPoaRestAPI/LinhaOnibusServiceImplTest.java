@@ -5,15 +5,15 @@ import com.dataPoa.dataPoaRestAPI.services.servicesImpl.LinhaOnibusServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class LinhaOnibusServiceImplTest {
 
     @Mock
@@ -28,7 +28,7 @@ public class LinhaOnibusServiceImplTest {
     }
 
     @Test
-    public void shouldSaveAllBuslineFromService() throws IOException {
+    public void shouldSaveAllBusLineFromService() throws IOException {
         LinhaOnibus linhaOnibus = new LinhaOnibus();
 
         service.saveLinhasFromService();
