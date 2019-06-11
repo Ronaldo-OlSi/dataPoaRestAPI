@@ -2,6 +2,9 @@ language: java
 
 install: true
 
+services:
+  - mongodb
+
 jdk:
   - openjdk8
   - openjdk10
@@ -15,6 +18,3 @@ script: ./mvnw clean install
 cache:
   directories:
     - $HOME/.m2
-
-services:
-  - mongodb
