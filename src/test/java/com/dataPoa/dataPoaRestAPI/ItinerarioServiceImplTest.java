@@ -21,7 +21,7 @@ public class ItinerarioServiceImplTest {
     @Mock
     private ItinerarioServiceImpl service = mock(ItinerarioServiceImpl.class);
 
-    @Test(expected = { IOException.class, JSONException.class })
+    @Test
     public void shouldSuccessWhenGetAllItinerariosFromService() throws IOException {
         assertTrue(service.getAllItinerariosByLinha()
                 .stream()
@@ -35,7 +35,7 @@ public class ItinerarioServiceImplTest {
                 .anyMatch(Objects::isNull);
     }
 
-    @Test(expected = { IOException.class, JSONException.class })
+    @Test
     public void shouldSuccessWhenSaveItinerariosFromService() throws IOException {
         verify(service, times(1))
                 .saveItinerariosFromService();
@@ -57,7 +57,7 @@ public class ItinerarioServiceImplTest {
         assertNotEquals(null, itinerario);
     }
 
-    @Test(expected = { IOException.class, JSONException.class })
+    @Test
     public void shouldFailWhenSaveItinerariosFromService() throws IOException {
         verify(service, times(1))
                 .saveItinerariosFromService();
@@ -68,7 +68,7 @@ public class ItinerarioServiceImplTest {
                 .thenThrow(IOException.class);
     }
 
-    @Test(expected = { IOException.class, JSONException.class })
+    @Test
     public void shouldFailWhenGetAllItinerariosFromService() throws IOException {
         when(service.getAllItinerariosByLinha()
                 .stream()
