@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import org.json.JSONException;
 import java.io.IOException;
 import java.util.Objects;
 import java.lang.String;
