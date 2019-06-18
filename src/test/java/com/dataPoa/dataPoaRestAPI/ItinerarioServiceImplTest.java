@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.lang.String;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -22,7 +23,7 @@ public class ItinerarioServiceImplTest {
     private ItinerarioServiceImpl service = mock(ItinerarioServiceImpl.class);
 
     @Test
-    public void shouldSuccessWhenGetAllItinerariosFromService() throws IOException {
+    public void shouldSuccessWhenGetAllItinerariosFromService() throws IOException, JSONException {
         assertTrue(service.getAllItinerariosByLinha()
                 .stream()
                 .anyMatch(Objects::nonNull)
@@ -36,7 +37,7 @@ public class ItinerarioServiceImplTest {
     }
 
     @Test
-    public void shouldSuccessWhenSaveItinerariosFromService() throws IOException {
+    public void shouldSuccessWhenSaveItinerariosFromService() throws IOException, JSONException {
         verify(service, times(1))
                 .saveItinerariosFromService();
 
@@ -58,7 +59,7 @@ public class ItinerarioServiceImplTest {
     }
 
     @Test
-    public void shouldFailWhenSaveItinerariosFromService() throws IOException {
+    public void shouldFailWhenSaveItinerariosFromService() throws IOException, JSONException {
         verify(service, times(1))
                 .saveItinerariosFromService();
 
@@ -69,7 +70,7 @@ public class ItinerarioServiceImplTest {
     }
 
     @Test
-    public void shouldFailWhenGetAllItinerariosFromService() throws IOException {
+    public void shouldFailWhenGetAllItinerariosFromService() throws IOException, JSONException {
         when(service.getAllItinerariosByLinha()
                 .stream()
                 .anyMatch(Objects::isNull))
